@@ -15,8 +15,8 @@ app.get("/students", (req, resp) => {
   resp.send(students)
 })
 
-app.listen(9090, (err)=>{
+app.listen(5000, (err)=>{
   if(!err) {
-    console.log("服务器启动成功，请求地址：http://localhost:9090/")
+    console.log("服务器启动成功，请求地址：http://localhost:5000/")
   }
 })
