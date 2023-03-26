@@ -10,3 +10,26 @@ redux devtools
   1. yarn add redux-devtools-extensions
   2. redux > store.js 引入 import {composeWithDevTools} from "redux-devtools-extensions"
   3. export default createStore(allReducer, composeWithDevTools(applyMiddleware(thunk)))
+
+
+# react-extra
+
+## setState的两种写法
+  1. 对象式的`setState(stateChange, [callback])`
+  callback 是可选参数，在状态更新完之后调用
+  ``` js
+  setState(stateChange, ()=> {
+    console.log(this.state.count)
+  })
+  ```
+
+  2. 函数式的 `setState`
+  ``` js
+    setState((state, props) => ({count: state.count+1}), ()=> {
+      console.log(this.state.count)
+    })
+  ```
+
+  使用原则：
+    1. 更新状态依赖于原来的状态推荐使用函数式写法
+    2. 更新状态不依赖于原来的状态 推荐使用对象式
