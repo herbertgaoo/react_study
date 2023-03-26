@@ -7,7 +7,7 @@ import store from './redux/store'
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
     <React.StrictMode>
-      {/* Provider自动传递store给容器组件, App所有的后代容器组件都能接收到store */}
+      {/* Provider自动传递store给容器组件 */}
       <Provider store={store}>
         <App />
       </Provider>

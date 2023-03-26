@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Count from './containers/Count'    // 引入容器组件
-import Person from './containers/Person'
+import Count from './containers/Count'
 
 export default class App extends Component {
   render() {
@@ -8,8 +7,6 @@ export default class App extends Component {
       <div>
         {/* 容器组件 */}
         <Count />
-        <hr />
-        <Person/>
       </div>
     )
   }
