@@ -1,51 +1,46 @@
-import React, { Component } from 'react'
-import { ConfigProvider, Button, Space, DatePicker } from 'antd'
-import {
-  HomeOutlined,
-  LoadingOutlined,
-  SettingFilled,
-  SmileOutlined,
-  SyncOutlined,
-} from '@ant-design/icons';
+import React, { Component, lazy, Suspense } from "react";
+import {Link, Route} from 'react-router-dom'
+// import About from "./components/About";
+// import Home from "./components/Home";
 
-const { RangePicker } = DatePicker;
+const About = lazy(()=> import('./components/About'))
+const Home = lazy(()=> import('./components/Home'))
 
 export default class App extends Component {
-  state = {
-    theme: {
-      token: {
-        colorPrimary: '#ff16b2'
-      }
-    }
-  }
   render() {
-    const {theme} = this.state
     return (
-      <ConfigProvider theme={theme}>
-        <div>
-          <button>button</button>
-          <Button type="primary">primary button</Button>
-          <Button>primary button</Button>
-
-          <Space>
-            <HomeOutlined />
-            <SettingFilled />
-            <SmileOutlined />
-            <SyncOutlined spin />
-            <SmileOutlined rotate={180} />
-            <LoadingOutlined />
-          </Space>
-
-          <Space direction="vertical" size={12}>
-            <RangePicker />
-            <RangePicker showTime />
-            <RangePicker picker="week" />
-            <RangePicker picker="month" />
-            <RangePicker picker="quarter" />
-            <RangePicker picker="year" />
-          </Space>
+      <div>
+        <div className="row">
+          <div className="col-xs-offset-2 col-xs-8">
+            <div className="page-header">
+              <h2>React Router Demo</h2>
+            </div>
+          </div>
         </div>
-      </ConfigProvider>
-    )
+        <div className="row">
+          <div className="col-xs-2 col-xs-offset-2">
+            <div className="list-group">
+              {/* <a className="list-group-item" href="./about.html">About</a>
+              <a className="list-group-item active" href="./home.html">Home</a> */}
+
+              {/* 在react中靠路由链接实现切换组件 编写路由链接*/}
+                <Link className="list-group-item" to="/about">About</Link>
+                <Link className="list-group-item" to="/home">Home</Link>
+            </div>
+          </div>
+          <div className="col-xs-6">
+            <div className="panel">
+              <div className="panel-body">
+                {/* 注册路由 */}
+                <Suspense fallback={<h1>Loading......</h1>}>
+                  <Route path="/about" component={About}/>
+                  <Route path="/home" component={Home}/>
+                </Suspense>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }

@@ -1,16 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client"
 import App from "./App";
-import {Provider} from "react-redux"
-import store from './redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
     <React.StrictMode>
       {/* Provider自动传递store给容器组件, App所有的后代容器组件都能接收到store */}
-      <Provider store={store}>
         <App />
-      </Provider>
     </React.StrictMode>
 )
 
